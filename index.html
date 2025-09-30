@@ -1,28 +1,214 @@
-body {
-  margin: 0;
-  font-family: 'Orbitron', sans-serif;
-  background: linear-gradient(to bottom, #060b1a, #000000);
-  color: white;
-  text-align: center;
-  direction: rtl; /* вернули обратно */
-}
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Faqja e Arben - 1xBet</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(to bottom, #060b1a, #000000);
+      color: white;
+      text-align: center;
+      direction: rtl; /* RTL направление */
+    }
 
-.comment {
-  background: #111c2b;
-  margin: 10px auto;
-  padding: 15px;
-  border-radius: 15px;
-  max-width: 700px;
-  display: flex;
-  align-items: center;
-  flex-direction: row-reverse; /* картинка справа, текст слева */
-}
+    .button {
+      background: linear-gradient(45deg, #d4145a, #fbb03b);
+      border: none;
+      border-radius: 20px;
+      color: white;
+      padding: 15px 30px;
+      margin: 10px;
+      font-size: 1.2em;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(255, 0, 100, 0.6);
+      text-decoration: none;
+      display: inline-block;
+    }
 
-.comment img {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  margin-left: 0;   /* убираем левый отступ */
-  margin-right: 15px; /* делаем отступ справа */
-}
+    .button-green {
+      background: linear-gradient(45deg, #0f0, #0c0);
+      box-shadow: 0 0 20px rgba(0, 255, 0, 0.6);
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 10px #0f0; }
+      50% { box-shadow: 0 0 30px #0f0; }
+      100% { box-shadow: 0 0 10px #0f0; }
+    }
+
+    .section {
+      padding: 30px 20px;
+    }
+
+    table {
+      margin: 0 auto;
+      border-collapse: collapse;
+      width: 90%;
+      margin-bottom: 40px;
+    }
+
+    th, td {
+      padding: 12px;
+      border-bottom: 1px solid #444;
+    }
+
+    .comment {
+      background: #111c2b;
+      margin: 10px auto;
+      padding: 15px;
+      border-radius: 15px;
+      max-width: 700px;
+      display: flex;
+      align-items: center;
+      flex-direction: row-reverse; /* картинка справа, текст слева */
+    }
+
+    .comment img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      margin-left: 0;
+      margin-right: 15px;
+    }
+
+    .comment-info span:first-child {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    #signal-display {
+      font-size: 1.5em;
+      color: #00ffcc;
+      margin-top: 20px;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: #111c2b;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 350px;
+      width: 90%;
+      text-align: center;
+    }
+
+    .modal input {
+      padding: 10px;
+      font-size: 1em;
+      width: 90%;
+      margin: 15px 0;
+      border-radius: 6px;
+      border: none;
+      text-align: center;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="section">
+    <h1>🚀 Sinjalet e Arben - Fitoni me 1xBet tani!</h1>
+    <a class="button" href="https://t.me/Arben_Predictor_bot" target="_blank">✉️ Bisedo me Arben</a>
+    <a class="button" href="https://reffpa.com/L?tag=d_4361215m_32259c_&site=4361215&ad=32259&r=registration" target="_blank">📝 Regjistrohu në 1xBet</a>
+    <button class="button button-green" onclick="openModal()">✅ Merr sinjalin</button>
+    <div id="signal-display"></div>
+    <div id="user-id"></div>
+  </div>
+
+  <div class="section">
+    <h2>Fituesit e raundeve të kaluara 🎉</h2>
+    <table>
+      <tr><th>Emri</th><th>Komenti</th><th>Fitimet</th></tr>
+      <tr><td>Ardit Hoxha</td><td>Faleminderit Arben, pagova borxhet dhe tani jam i qetë</td><td>912,350 ALL</td></tr>
+      <tr><td>Erion Kola</td><td>Në fillim nuk besoja, tani fitoj çdo ditë</td><td>2,145,700 ALL</td></tr>
+      <tr><td>Alba Leka</td><td>Arben ndryshoi jetën time! Tani jam e lirë</td><td>1,805,600 ALL</td></tr>
+      <tr><td>Gentian Meta</td><td>Nuk kam më nevojë për punë! Kam gjithçka</td><td>1,523,100 ALL</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="comment">
+      <img src="https://randomuser.me/api/portraits/men/5.jpg" alt="avatar">
+      <div class="comment-info">
+        <span>Luan Dervishi</span>
+        <span>Arben më ndihmoi të paguaj kredinë time bankare. Faleminderit shumë!</span>
+      </div>
+    </div>
+    <div class="comment">
+      <img src="https://randomuser.me/api/portraits/men/6.jpg" alt="avatar">
+      <div class="comment-info">
+        <span>Erisa Hoxha</span>
+        <span>Në fillim dyshova, tani fitoj mijëra lekë!</span>
+      </div>
+    </div>
+    <div class="comment">
+      <img src="https://randomuser.me/api/portraits/women/7.jpg" alt="avatar">
+      <div class="comment-info">
+        <span>Albiona Kola</span>
+        <span>Tani jetoj me liri financiare falë Arben ❤️</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="idModal" class="modal">
+    <div class="modal-content">
+      <h2>Shkruani ID-në tuaj në 1xBet (10 shifra)</h2>
+      <input type="text" id="betId" maxlength="10" placeholder="XXXXXXXXXX">
+      <button class="button button-green" onclick="submitId()">Konfirmo</button>
+    </div>
+  </div>
+
+  <script>
+    function openModal() {
+      document.getElementById("idModal").style.display = "flex";
+    }
+
+    function submitId() {
+      const id = document.getElementById("betId").value;
+      if (id.length !== 10 || isNaN(id)) {
+        alert("⚠️ Ju lutemi shkruani një ID të vlefshme me 10 shifra");
+        return;
+      }
+      document.getElementById("idModal").style.display = "none";
+      document.getElementById("user-id").textContent = "✅ ID juaj: " + id;
+
+      const display = document.getElementById("signal-display");
+      display.textContent = "⏳ Po lidhet me programin...";
+      setTimeout(() => {
+        display.textContent = "⚡ Po përgatitet sinjali...";
+      }, 3000);
+      setTimeout(() => {
+        display.textContent = "⚠️ Ju duhet të mbushni llogarinë tuaj në 1xBet";
+      }, 6000);
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById("idModal");
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>
+
 
