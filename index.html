@@ -12,7 +12,7 @@
       background: linear-gradient(to bottom, #060b1a, #000000);
       color: white;
       text-align: center;
-      direction: rtl;
+      direction: ltr;
     }
     .button {
       background: linear-gradient(45deg, #d4145a, #fbb03b);
@@ -43,7 +43,7 @@
     table {
       margin: 0 auto;
       border-collapse: collapse;
-      width: 80%;
+      width: 90%;
       margin-bottom: 40px;
     }
     th, td {
@@ -75,89 +75,123 @@
       color: #00ffcc;
       margin-top: 20px;
     }
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: #111c2b;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 350px;
+      width: 90%;
+      text-align: center;
+    }
+    .modal input {
+      padding: 10px;
+      font-size: 1em;
+      width: 90%;
+      margin: 15px 0;
+      border-radius: 6px;
+      border: none;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
   <div class="section">
-    <h1>🚀 Roli juaj nuk ka përfunduar ende. Pritni një sinjal të fuqishëm pas pak!</h1>
+    <h1>🚀 Sinjalet e Arben - Fitoni me 1xBet tani!</h1>
     <a class="button" href="https://t.me/Arben_Predictor_bot" target="_blank">✉️ Bisedo me Arben</a>
-    <a class="button" href="https://reffpa.com/L?tag=d_4361215m_32259c_&site=4361215&ad=32259&r=registration" target="_blank">🎮 Regjistrohu në 1xBet</a>
-    <button class="button button-green" onclick="getSignal()">✅ Merr sinjalin</button>
+    <a class="button" href="https://reffpa.com/L?tag=d_4361215m_32259c_&site=4361215&ad=32259&r=registration" target="_blank">📝 Regjistrohu në 1xBet</a>
+    <button class="button button-green" onclick="openModal()">✅ Merr sinjalin</button>
     <div id="signal-display"></div>
+    <div id="user-id"></div>
   </div>
 
   <div class="section">
     <h2>Fituesit e raundeve të kaluara 🎉</h2>
     <table>
       <tr><th>Emri</th><th>Komenti</th><th>Fitimet</th></tr>
-      <tr><td>Ahmed Arabi</td><td>Faleminderit Arben, pagova borxhin tim dhe jam i qetë</td><td>912,350 TND</td></tr>
-      <tr><td>Sami Ben Omar</td><td>Nuk besova në fillim, tani fitoj çdo ditë</td><td>2,145,700 TND</td></tr>
-      <tr><td>Najwa Tunisiane</td><td>Arben ndryshoi jetën time, tani jam e lirë</td><td>1,805,600 TND</td></tr>
-      <tr><td>Tarik Mansour</td><td>Nuk kam nevojë më për punë, kam gjithçka!</td><td>1,523,100 TND</td></tr>
+      <tr><td>Ardit Hoxha</td><td>Faleminderit Arben, pagova borxhet dhe tani jam i qetë</td><td>912,350 ALL</td></tr>
+      <tr><td>Erion Kola</td><td>Në fillim nuk besoja, tani fitoj çdo ditë</td><td>2,145,700 ALL</td></tr>
+      <tr><td>Alba Leka</td><td>Arben ndryshoi jetën time! Tani jam e lirë</td><td>1,805,600 ALL</td></tr>
+      <tr><td>Gentian Meta</td><td>Nuk kam më nevojë për punë! Kam gjithçka</td><td>1,523,100 ALL</td></tr>
     </table>
   </div>
 
   <div class="section">
     <div class="comment">
-      <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="avatar">
+      <img src="https://randomuser.me/api/portraits/men/5.jpg" alt="avatar">
       <div class="comment-info">
-        <span>Yusuf Ben Ali</span>
+        <span>Luan Dervishi</span>
         <span>Arben më ndihmoi të paguaj kredinë time bankare. Faleminderit shumë!</span>
       </div>
     </div>
     <div class="comment">
-      <img src="https://randomuser.me/api/portraits/men/2.jpg" alt="avatar">
+      <img src="https://randomuser.me/api/portraits/men/6.jpg" alt="avatar">
       <div class="comment-info">
-        <span>Kreim Jebali</span>
-        <span>Në fillim dyshova, tani fitoj mijëra dinarë!</span>
+        <span>Erisa Hoxha</span>
+        <span>Në fillim dyshova, tani fitoj mijëra lekë!</span>
       </div>
     </div>
     <div class="comment">
-      <img src="https://randomuser.me/api/portraits/women/3.jpg" alt="avatar">
+      <img src="https://randomuser.me/api/portraits/women/7.jpg" alt="avatar">
       <div class="comment-info">
-        <span>Rim Mansour</span>
+        <span>Albiona Kola</span>
         <span>Tani jetoj me liri financiare falë Arben ❤️</span>
-      </div>
-    </div>
-    <div class="comment">
-      <img src="https://randomuser.me/api/portraits/men/4.jpg" alt="avatar">
-      <div class="comment-info">
-        <span>Marwan Ben Salem</span>
-        <span>Arben ndryshoi komplet jetën time, faleminderit!</span>
       </div>
     </div>
   </div>
 
-  <script>
-    let signalActive = false;
+  <!-- Modal -->
+  <div id="idModal" class="modal">
+    <div class="modal-content">
+      <h2>Shkruani ID-në tuaj në 1xBet (10 shifra)</h2>
+      <input type="text" id="betId" maxlength="10" placeholder="XXXXXXXXXX">
+      <button class="button button-green" onclick="submitId()">Konfirmo</button>
+    </div>
+  </div>
 
-    function getSignal() {
-      const display = document.getElementById('signal-display');
-      
-      if (signalActive) {
-        display.textContent = '🎯 Sinjali është në përgatitje, ju lutemi prisni...';
+  <script>
+    function openModal() {
+      document.getElementById("idModal").style.display = "flex";
+    }
+
+    function submitId() {
+      const id = document.getElementById("betId").value;
+      if (id.length !== 10 || isNaN(id)) {
+        alert("⚠️ Ju lutemi shkruani një ID të vlefshme me 10 shifra");
         return;
       }
-      
-      signalActive = true;
-      let multiplier;
-      const random = Math.random();
-      
-      if (random < 0.7) {
-        multiplier = (Math.random() * (1.45 - 1) + 1).toFixed(2);
-      } else if (random < 0.93) {
-        multiplier = (Math.random() * (5 - 1.8) + 1.8).toFixed(2);
-      } else if (random < 0.99) {
-        multiplier = (Math.random() * (70 - 15) + 15).toFixed(2);
-      } else {
-        multiplier = (Math.random() * (190 - 100) + 100).toFixed(2);
-      }
-      
-      display.textContent = `🚀 Sinjal i ri gati: ×${multiplier}`;
+      document.getElementById("idModal").style.display = "none";
+      document.getElementById("user-id").textContent = "✅ ID juaj: " + id;
+
+      const display = document.getElementById("signal-display");
+      display.textContent = "⏳ Po lidhet me programin...";
       setTimeout(() => {
-        signalActive = false;
-      }, 9000);
+        display.textContent = "⚡ Po përgatitet sinjali...";
+      }, 3000);
+      setTimeout(() => {
+        display.textContent = "⚠️ Ju duhet të mbushni llogarinë tuaj në 1xBet";
+      }, 6000);
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById("idModal");
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
     }
   </script>
 </body>
 </html>
+
